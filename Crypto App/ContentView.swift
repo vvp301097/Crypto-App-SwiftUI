@@ -9,13 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                
+                ForEach(0..<10) { index in
+                    HStack {
+//                        AsyncImage(
+//                            url: URL(string: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"),
+//                            content: { image in
+//                                image.resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .frame(maxWidth: 30, maxHeight: 30)
+//                            },
+//                            placeholder: {
+//                                ProgressView()
+//                            }
+//                        )
+                        Text("Bitcoin")
+                        Spacer()
+                        Text("$12,345.67")
+                    }
+                }
+               
+                
+            }
+            .navigationTitle("Today's Prices ")
         }
-        .padding()
     }
 }
 
