@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F28BAC5D2CC5532A00DE6B50 /* CryptoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28BAC5C2CC5532A00DE6B50 /* CryptoModel.swift */; };
+		F28BAC602CC5548600DE6B50 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28BAC5F2CC5548600DE6B50 /* AppViewModel.swift */; };
+		F28BAC632CC564E000DE6B50 /* Double + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28BAC622CC564E000DE6B50 /* Double + Ext.swift */; };
 		F28FEB7B2CC2D1270031E40D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28FEB772CC2D1270031E40D /* ContentView.swift */; };
 		F28FEB7C2CC2D1270031E40D /* Crypto_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28FEB792CC2D1270031E40D /* Crypto_AppApp.swift */; };
 		F28FEB7D2CC2D1270031E40D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F28FEB732CC2D1270031E40D /* Preview Assets.xcassets */; };
 		F28FEB7E2CC2D1270031E40D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F28FEB762CC2D1270031E40D /* Assets.xcassets */; };
 		F28FEB802CC2D1450031E40D /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28FEB7F2CC2D1450031E40D /* LineGraph.swift */; };
+		F2B14F162CC3DBC90084759C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B14F152CC3DBC90084759C /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F28BAC5C2CC5532A00DE6B50 /* CryptoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoModel.swift; sourceTree = "<group>"; };
+		F28BAC5F2CC5548600DE6B50 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		F28BAC622CC564E000DE6B50 /* Double + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Ext.swift"; sourceTree = "<group>"; };
 		F28FEB602CC2AC2F0031E40D /* Crypto App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F28FEB732CC2D1270031E40D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F28FEB762CC2D1270031E40D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -22,6 +29,7 @@
 		F28FEB782CC2D1270031E40D /* Crypto_App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Crypto_App.entitlements; sourceTree = "<group>"; };
 		F28FEB792CC2D1270031E40D /* Crypto_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto_AppApp.swift; sourceTree = "<group>"; };
 		F28FEB7F2CC2D1450031E40D /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
+		F2B14F152CC3DBC90084759C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F28BAC5B2CC5531800DE6B50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F28BAC5C2CC5532A00DE6B50 /* CryptoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F28BAC5E2CC5546D00DE6B50 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F28BAC5F2CC5548600DE6B50 /* AppViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F28BAC612CC564CC00DE6B50 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F28BAC622CC564E000DE6B50 /* Double + Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F28FEB572CC2AC2F0031E40D = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				F28FEB7F2CC2D1450031E40D /* LineGraph.swift */,
+				F2B14F152CC3DBC90084759C /* Home.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -70,6 +103,9 @@
 		F28FEB7A2CC2D1270031E40D /* Crypto App */ = {
 			isa = PBXGroup;
 			children = (
+				F28BAC612CC564CC00DE6B50 /* Extension */,
+				F28BAC5E2CC5546D00DE6B50 /* ViewModel */,
+				F28BAC5B2CC5531800DE6B50 /* Model */,
 				F28FEB742CC2D1270031E40D /* Preview Content */,
 				F28FEB752CC2D1270031E40D /* View */,
 				F28FEB762CC2D1270031E40D /* Assets.xcassets */,
@@ -155,7 +191,11 @@
 			files = (
 				F28FEB7B2CC2D1270031E40D /* ContentView.swift in Sources */,
 				F28FEB802CC2D1450031E40D /* LineGraph.swift in Sources */,
+				F28BAC602CC5548600DE6B50 /* AppViewModel.swift in Sources */,
+				F2B14F162CC3DBC90084759C /* Home.swift in Sources */,
+				F28BAC632CC564E000DE6B50 /* Double + Ext.swift in Sources */,
 				F28FEB7C2CC2D1270031E40D /* Crypto_AppApp.swift in Sources */,
+				F28BAC5D2CC5532A00DE6B50 /* CryptoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
