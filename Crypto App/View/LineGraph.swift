@@ -14,8 +14,9 @@ struct LineGraph: View {
     
     // number of plots..
     
-    var data: [Double]
+    @State var data: [Double]
     var profit: Bool = false
+    var showModelOnly: Bool = false
     
     // View Properties
     @State private var currentPlot = ""
@@ -40,12 +41,12 @@ struct LineGraph: View {
                 
                 let progress = (value - minPoint) / (maxPoint - minPoint)
                 
-                let pathHeight = (height - 50) * progress
+                let pathHeight = (height) * progress
                 
                 // width
                 let pathWidth = width * CGFloat(index)
                 
-                return CGPoint(x: pathWidth, y: -pathHeight + height - 70)
+                return CGPoint(x: pathWidth, y: -pathHeight + height)
             }
             ZStack {
                 
@@ -55,19 +56,22 @@ struct LineGraph: View {
                     
                 )
                 
-                LinearGradient(colors: [profit ? .green.opacity(0.3) : .red.opacity(0.3), .clear], startPoint: .top, endPoint: .bottom)
+                if !showModelOnly {
+                    LinearGradient(colors: [profit ? .green.opacity(0.3) : .red.opacity(0.3), .clear], startPoint: .top, endPoint: .bottom)
+                    
                 
-            
-                    .clipShape(Path{ path in
-                        path.move(to: .init(x: 0, y: 0))
-                        path.addLines(points)
-                        
-                        path.addLine(to: CGPoint(x: geometry.size.width, y: height))
-                        
-                        path.addLine(to: CGPoint(x: 0, y: height))
-                        
-                    })
-                    .opacity(graphProgress)
+                        .clipShape(Path{ path in
+                            path.move(to: .init(x: 0, y: 0))
+                            path.addLines(points)
+                            
+                            path.addLine(to: CGPoint(x: geometry.size.width, y: height))
+                            
+                            path.addLine(to: CGPoint(x: 0, y: height))
+                            
+                        })
+                        .opacity(graphProgress)
+                }
+               
             }
             .overlay(alignment: .bottomLeading) {
                 VStack(spacing: 0) {
@@ -99,7 +103,7 @@ struct LineGraph: View {
                 .opacity(showPlot ? 1 : 0)
             }
             .contentShape(.rect)
-            .gesture(DragGesture().onChanged({ value in
+            .gesture( showModelOnly ? nil :  DragGesture().onChanged({ value in
                 withAnimation {
                     showPlot = true
                 }
@@ -120,32 +124,34 @@ struct LineGraph: View {
             }).updating($isDrag) { value , out, _ in
                 out = true
             }
-            
             )
             
         }
-        .background {
-            VStack(alignment: .leading) {
-                let max = data.max() ?? 0
-                let min = data.min() ?? 0
-                Text(max.convertDoubleToCurrency())
-                    .font(.caption.bold())
-                
-                Spacer()
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(min.convertDoubleToCurrency())
+        .overlay {
+            if !showModelOnly {
+                VStack(alignment: .leading) {
+                    let max = data.max() ?? 0
+                    let min = data.min() ?? 0
+                    Text(max.convertDoubleToCurrency())
                         .font(.caption.bold())
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(min.convertDoubleToCurrency())
+                            .font(.caption.bold())
 
-                    Text("Last 7 days")
-                        .font(.caption)
-                        .foregroundStyle(.gray)
+                        Text("Last 7 days")
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+                    }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+           
         }
         .onChange(of: isDrag) { oldValue, newValue in
-            if !newValue {
+            if !newValue && !showModelOnly {
                 showPlot = false
             }
         }
@@ -157,22 +163,19 @@ struct LineGraph: View {
             }
         }
         .onChange(of: data) { _, _ in
-            graphProgress = 0
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                withAnimation(.easeInOut(duration: 1)) {
-                    graphProgress = 1
-                }
-            }
+//            graphProgress = 0
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                withAnimation(.easeInOut(duration: 1)) {
+//                    graphProgress = 1
+//                }
+//            }
         }
-//        .padding(.horizontal, 10)
     }
-    
-    
     
 }
 
 #Preview {
-    Home()
+    LineGraph(data: [10, 20, 30, 40, 50])
 }
 
 

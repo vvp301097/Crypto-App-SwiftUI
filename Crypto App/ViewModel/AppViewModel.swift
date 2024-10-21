@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 class AppViewModel: ObservableObject {
+    private var timer: Timer? = nil
+
     @Published var coins: [CryptoModel]?
     
     @Published var selectedCoin: CryptoModel?

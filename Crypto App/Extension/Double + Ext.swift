@@ -10,10 +10,9 @@ import Foundation
 extension Double {
     func convertDoubleToCurrency() -> String {
         let formatter = NumberFormatter()
-        formatter.currencySymbol = "$"
-        
         formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = 2
+        formatter.locale = Locale(identifier: "en_US")
+
         return formatter.string(from: NSNumber(value: self)) ?? ""
         
     }
